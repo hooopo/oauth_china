@@ -1,0 +1,3 @@
+module OauthChina
+  # Your code goes here...
+end
