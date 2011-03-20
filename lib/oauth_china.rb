@@ -77,5 +77,5 @@ module OauthChina
 
   autoload :Sina,           'oauth_china/strategies/sina'
   autoload :Douban,         'oauth_china/strategies/douban'
-  autoload :QQ,             'oauth_china/strategies/qq'
+  autoload :Qq,             'oauth_china/strategies/qq'
 end

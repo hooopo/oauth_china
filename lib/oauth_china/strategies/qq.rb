@@ -1,5 +1,5 @@
 module OauthChina
-  class QQ < OauthChina::OAuth
+  class Qq < OauthChina::OAuth
 
     def initialize(*args)
       self.consumer_options = {
