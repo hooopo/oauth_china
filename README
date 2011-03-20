@@ -1,0 +1,51 @@
+OauthChina
+======
+
+A Ruby wrapper for OAuth API, Rails  support only.
+支持豆瓣，新浪微薄，qq微薄
+
+Install
+=======
+
+$ gem install oauth_china
+
+Usage
+=======
+
+1. Add below lines to your Gemfile:
+
+gem 'oauth_china'
+
+2. 添加配置文件
+
+config/oauth/douban.yml
+config/oauth/sina.yml
+config/oauth/qq.yml
+
+例子：
+
+development:
+  key:    "you api key"
+  secret: "your secret"
+  url:    "http://yoursite.com"
+  callback: "http://localhost:3000/your_callback_url"
+production:
+  key:    "you api key"
+  secret: "your secret"
+  url:    "http://yoursite.com"
+  callback: "http://localhost:3000/your_callback_url"
+
+3.Example
+    if params[:oauth_token]
+      sina = OauthChina::Sina.load(Rails.cache.read(params[:oauth_token]))
+      sina.authorize(:oauth_verifier => params[:oauth_verifier])
+      #resp0 = sina.get("http://api.douban.com/people/%40me")
+      #resp1 = sina.get("http://open.t.qq.com/api/user/info?format=json")
+      resp = sina.get("/account/verify_credentials.xml")
+      render :text => resp.body
+    else
+      sina = OauthChina::Sina.new
+      url = sina.authorize_url
+      Rails.cache.write(sina.oauth_token, sina.dump)
+      redirect_to url
+    end
