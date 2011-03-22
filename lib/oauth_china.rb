@@ -19,7 +19,7 @@ module OauthChina
       end
     end
 
-    #每次认证等唯一标志
+    #每次认证的唯一标志
     def oauth_token
       request_token.params[:oauth_token]
     end
@@ -29,11 +29,11 @@ module OauthChina
     end
 
     def self.load(data)
-      a_token        = data[:access_token]
-      a_token_secret = data[:access_token_secret]
+      access_token        = data[:access_token]
+      access_token_secret = data[:access_token_secret]
 
       oauth = self.new(data[:request_token], data[:request_token_secret])
-      oauth.access_token = ::OAuth::AccessToken.new(consumer, a_token, a_token_secret) if a_token
+      oauth.access_token = ::OAuth::AccessToken.new(consumer, access_token, access_token_secret) if access_token
       oauth
     end
 
@@ -68,8 +68,8 @@ module OauthChina
     #QQ和新浪OAuth需要verifier参数，豆瓣不需要
     def authorize(options = {})
       return unless self.access_token.nil?
-      a_token = self.request_token.get_access_token(options)
-      self.access_token ||= ::OAuth::AccessToken.new(consumer, a_token.token, a_token.secret)
+      token = self.request_token.get_access_token(options)
+      self.access_token ||= ::OAuth::AccessToken.new(consumer, token.token, token.secret)
     end
 
   end
