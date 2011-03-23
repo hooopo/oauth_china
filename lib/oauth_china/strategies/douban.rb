@@ -29,6 +29,15 @@ module OauthChina
       request_token = access_token = nil
     end
 
+    def add_status(content, options = {})
+      self.post("http://api.douban.com/miniblog/saying", <<-XML, {"Content-Type" =>  "application/atom+xml"})
+        <?xml version='1.0' encoding='UTF-8'?>
+        <entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:db="http://www.douban.com/xmlns/">
+          <content>#{content}</content>
+        </entry
+      XML
+    end
+
     protected
     def destroy_access_key
       response = delete("/access_token/#{access_token.token}")
