@@ -43,3 +43,7 @@ production:
       Rails.cache.write(sina.oauth_token, sina.dump)
       redirect_to url
     end
+
+腾讯微博API文档：http://open.t.qq.com/resource.php?i=1,1
+新浪微博API文档：http://open.t.sina.com.cn/wiki/index.php/API%E6%96%87%E6%A1%A3
+豆瓣微博API文档：http://www.douban.com/service/apidoc/reference/

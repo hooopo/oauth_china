@@ -30,5 +30,10 @@ module OauthChina
     def destroy
       #TODO
     end
+
+    def add_status(content, options = {})
+      options.merge!(:content => content)
+      self.post("http://open.t.qq.com/api/t/add", options)
+    end
   end
 end
