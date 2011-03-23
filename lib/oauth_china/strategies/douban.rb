@@ -19,11 +19,20 @@ module OauthChina
     end
 
     def authorized?
-      #TODO
+      return false if access_token.nil?
+      response = self.get("/access_token/#{access_token.token}")
+      response.code == '200'
     end
 
     def destroy
-      #TODO
+      destroy_access_key if !access_token.nil?
+      request_token = access_token = nil
+    end
+
+    protected
+    def destroy_access_key
+      response = delete("/access_token/#{access_token.token}")
+      response.code == '200'
     end
   end
 end
