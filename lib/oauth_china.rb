@@ -29,11 +29,8 @@ module OauthChina
     end
 
     def self.load(data)
-      access_token        = data[:access_token]
-      access_token_secret = data[:access_token_secret]
-
       oauth = self.new(data[:request_token], data[:request_token_secret])
-      oauth.access_token = ::OAuth::AccessToken.new(consumer, access_token, access_token_secret) if access_token
+      oauth.access_token = ::OAuth::AccessToken.new(oauth.consumer, data[:access_token], data[:access_token_secret]) if data[:access_token] && data[:access_token_secret]
       oauth
     end
 
