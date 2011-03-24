@@ -76,4 +76,5 @@ module OauthChina
   autoload :Douban,         'oauth_china/strategies/douban'
   autoload :Qq,             'oauth_china/strategies/qq'
   autoload :Sohu,           'oauth_china/strategies/sohu'
+  autoload :Netease,        'oauth_china/strategies/netease'
 end
