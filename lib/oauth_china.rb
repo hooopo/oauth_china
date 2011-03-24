@@ -75,4 +75,5 @@ module OauthChina
   autoload :Sina,           'oauth_china/strategies/sina'
   autoload :Douban,         'oauth_china/strategies/douban'
   autoload :Qq,             'oauth_china/strategies/qq'
+  autoload :Sohu,           'oauth_china/strategies/sohu'
 end
