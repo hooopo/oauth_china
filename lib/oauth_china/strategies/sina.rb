@@ -23,5 +23,10 @@ module OauthChina
     def destroy
       #TODO
     end
+
+    def add_status(content, options = {})
+      options.merge!(:status => content)
+      self.post("http://api.t.sina.com.cn/statuses/update.json", options)
+    end
   end
 end
