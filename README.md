@@ -14,12 +14,13 @@
         gem 'oauth_china'
 
 - 添加配置文件
+* 配置文件路径
 
         config/oauth/douban.yml
         config/oauth/sina.yml
         config/oauth/qq.yml
 
-        配置文件格式：
+* 配置文件格式：
             development:
               key:    "you api key"
               secret: "your secret"
