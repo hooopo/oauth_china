@@ -1,6 +1,6 @@
 一.简介：
 
-    OAuth gem for rails，支持豆瓣，新浪微薄，qq微薄
+    OAuth gem for rails，支持豆瓣，新浪微薄，腾讯微博，搜狐微博，网易微博
 
 二.安装：
 
