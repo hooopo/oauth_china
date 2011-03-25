@@ -9,7 +9,7 @@
 #使用：
 
     1. 在Gemfile里添加:
-
+        gem 'oauth'
         gem 'oauth_china'
 
     2. 添加配置文件
