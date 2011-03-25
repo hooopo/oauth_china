@@ -1,12 +1,12 @@
-一.简介：
+#简介：
 
     OAuth gem for rails，支持豆瓣，新浪微薄，腾讯微博，搜狐微博，网易微博
 
-二.安装：
+#安装：
 
     $ gem install oauth_china
 
-三.使用：
+#使用：
 
     1. 在Gemfile里添加:
 
@@ -34,7 +34,7 @@
     4.注意
        系统时间要正确设置。否则会出现timstamps refused错误
 
-四.API文档
+#API文档
     腾讯微博API文档：http://open.t.qq.com/resource.php?i=1,1
     新浪微博API文档：http://open.t.sina.com.cn/wiki/index.php/API%E6%96%87%E6%A1%A3
     豆瓣微博API文档：http://www.douban.com/service/apidoc/reference/
