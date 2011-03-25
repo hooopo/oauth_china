@@ -3,7 +3,7 @@ module OauthChina
 
     def initialize(*args)
       #fuck 163
-      #authenticate
+      #这个authorize path不是authorize，是authenticate呀！！！真变态！
       self.consumer_options = {
         :site               => 'http://api.t.163.com',
         :request_token_path => '/oauth/request_token',

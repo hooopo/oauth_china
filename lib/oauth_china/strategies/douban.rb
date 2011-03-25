@@ -2,6 +2,7 @@ module OauthChina
   class Douban < OauthChina::OAuth
 
     def initialize(*args)
+      #豆瓣只支持header方式呀！
       self.consumer_options = {
         :signature_method   => "HMAC-SHA1",
         :site               => "http://www.douban.com",
