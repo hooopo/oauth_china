@@ -8,11 +8,12 @@
 
 #使用：
 
-    1. 在Gemfile里添加:
+    *在Gemfile里添加:
+
         gem 'oauth'
         gem 'oauth_china'
 
-    2. 添加配置文件
+    *添加配置文件
 
         config/oauth/douban.yml
         config/oauth/sina.yml
@@ -30,8 +31,8 @@
               url:    "http://yoursite.com"
               callback: "http://localhost:3000/your_callback_url"
 
-    3.演示[TODO]
-    4.注意
+    *演示[TODO]
+    *注意
        系统时间要正确设置。否则会出现timstamps refused错误
 
 #API文档
