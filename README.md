@@ -35,60 +35,61 @@
           callback: "http://localhost:3000/your_callback_url"
 
 *  演示
-    #config/oauth/sina.yml
-    development:
-          key:    "you api key"
-          secret: "your secret"
-          url:    "http://yoursite.com"
-          callback: "http://localhost:3000/syncs/sina/callback"
-        production:
-          key:    "you api key"
-          secret: "your secret"
-          url:    "http://yoursite.com"
-          callback: "http://localhost:3000/syncs/sina/callback"
+
+            #config/oauth/sina.yml
+            development:
+                  key:    "you api key"
+                  secret: "your secret"
+                  url:    "http://yoursite.com"
+                  callback: "http://localhost:3000/syncs/sina/callback"
+                production:
+                  key:    "you api key"
+                  secret: "your secret"
+                  url:    "http://yoursite.com"
+                  callback: "http://localhost:3000/syncs/sina/callback"
 
 
-    #config/routes.rb
-    match "syncs/:type/new" => "syncs#new", :as => :sync_new
-    match "syncs/:type/callback" => "syncs#callback", :as => :sync_callback
+            #config/routes.rb
+            match "syncs/:type/new" => "syncs#new", :as => :sync_new
+            match "syncs/:type/callback" => "syncs#callback", :as => :sync_callback
 
-    #app/controllers/syncs_controller.rb
-    # encoding: UTF-8
-    class SyncsController < ApplicationController
+            #app/controllers/syncs_controller.rb
+            # encoding: UTF-8
+            class SyncsController < ApplicationController
 
-      before_filter :login_required
+              before_filter :login_required
 
-      def new
-        client = OauthChina::Sina.new
-        authorize_url = client.authorize_url
-        Rails.cache.write(build_oauth_token_key(client.name, client.oauth_token), client.dump)
-        redirect_to authorize_url
-      end
+              def new
+                client = OauthChina::Sina.new
+                authorize_url = client.authorize_url
+                Rails.cache.write(build_oauth_token_key(client.name, client.oauth_token), client.dump)
+                redirect_to authorize_url
+              end
 
-      def callback
-        client = OauthChina::Sina.load(Rails.cache.read(build_oauth_token_key(params[:type], params[:oauth_token])))
-        client.authorize(:oauth_verifier => params[:oauth_verifier])
+              def callback
+                client = OauthChina::Sina.load(Rails.cache.read(build_oauth_token_key(params[:type], params[:oauth_token])))
+                client.authorize(:oauth_verifier => params[:oauth_verifier])
 
-        results = client.dump
+                results = client.dump
 
-        if results[:access_token] && results[:access_token_secret]
-          #在这里把access token and access token secret存到db
-          #下次使用的时候:
-          #client = OauthChina::Sina.load(:access_token => "xx", :access_token_secret => "xxx")
-          #client.add_status("同步到新浪微薄..")
-          flash[:notice] = "授权成功！"
-        else
-          flash[:notice] = "授权失败!"
-        end
-        redirect_to account_syncs_path
-      end
+                if results[:access_token] && results[:access_token_secret]
+                  #在这里把access token and access token secret存到db
+                  #下次使用的时候:
+                  #client = OauthChina::Sina.load(:access_token => "xx", :access_token_secret => "xxx")
+                  #client.add_status("同步到新浪微薄..")
+                  flash[:notice] = "授权成功！"
+                else
+                  flash[:notice] = "授权失败!"
+                end
+                redirect_to account_syncs_path
+              end
 
-      private
-      def build_oauth_token_key(name, oauth_token)
-        [name, oauth_token].join("_")
-      end
+              private
+              def build_oauth_token_key(name, oauth_token)
+                [name, oauth_token].join("_")
+              end
 
-    end
+            end
 
 *  注意
 
