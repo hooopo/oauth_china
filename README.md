@@ -19,6 +19,8 @@
         config/oauth/douban.yml
         config/oauth/sina.yml
         config/oauth/qq.yml
+        config/oauth/sohu.yml
+        config/oauth/netease.yml
 
         配置文件格式：
         development:
