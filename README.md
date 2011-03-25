@@ -14,23 +14,23 @@
     gem 'oauth_china'
 
 2.  添加配置文件
-* 配置文件路径
 
-config/oauth/douban.yml
-config/oauth/sina.yml
-config/oauth/qq.yml
+    配置文件路径：
+    config/oauth/douban.yml
+    config/oauth/sina.yml
+    config/oauth/qq.yml
 
-* 配置文件格式
-development:
-  key:    "you api key"
-  secret: "your secret"
-  url:    "http://yoursite.com"
-  callback: "http://localhost:3000/your_callback_url"
-production:
-  key:    "you api key"
-  secret: "your secret"
-  url:    "http://yoursite.com"
-  callback: "http://localhost:3000/your_callback_url"
+    配置文件格式：
+    development:
+      key:    "you api key"
+      secret: "your secret"
+      url:    "http://yoursite.com"
+      callback: "http://localhost:3000/your_callback_url"
+    production:
+      key:    "you api key"
+      secret: "your secret"
+      url:    "http://yoursite.com"
+      callback: "http://localhost:3000/your_callback_url"
 
 3.  演示[TODO]
 4.  注意
