@@ -30,5 +30,11 @@ module OauthChina
       options.merge!(:status => content)
       self.post("http://api.t.163.com/statuses/update.json", options)
     end
+
+    #TODO
+    def upload_image(content, image_path, options = {})
+      add_status(content, options)
+    end
+
   end
 end

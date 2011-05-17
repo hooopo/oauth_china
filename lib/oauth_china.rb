@@ -1,9 +1,12 @@
 require 'rubygems'
 require 'oauth'
+require File.expand_path(File.join(File.dirname(__FILE__), "oauth_china/multipart")) 
 
 module OauthChina
 
   class OAuth
+
+    include Multipart
 
     CONFIG = {}
 

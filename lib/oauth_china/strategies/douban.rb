@@ -39,6 +39,11 @@ module OauthChina
         XML
     end
 
+    #TODO
+    def upload_image(content, image_path, options = {})
+      add_status(content, options)
+    end
+
     protected
     def destroy_access_key
       response = delete("/access_token/#{access_token.token}")
