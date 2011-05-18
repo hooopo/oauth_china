@@ -38,7 +38,6 @@ module OauthChina
     end
 
     #TODO
-    #还未实现
     def upload_image(content, image_path, options = {})
       add_status(content, options)
     end
@@ -48,32 +47,7 @@ module OauthChina
     #
     #      upload("http://open.t.qq.com/api/t/add_pic", options)
     #    end
-    #
-    #    def upload(url, options)
-    #      url  = URI.parse(url)
-    #      http = Net::HTTP.new(url.host, url.port)
-    #      req  = Net::HTTP::Post.new(url.request_uri)
-    #      req  = sign_without_pic_field(req, self.access_token, options)
-    #      req  = set_multipart_field(req, options)
-    #
-    #      http.request(req)
-    #
-    #    end
-    #
-    #    def sign_without_pic_field(req, access_token, options)
-    #      req.set_form_data(params_without_pic_field(options))
-    #      self.consumer.sign!(req, access_token)
-    #      req
-    #    end
-    #
-    #    def set_multipart_field(req, params)
-    #      multipart_post = MultipartPost.new
-    #      multipart_post.set_form_data(req, params)
-    #    end
-    #
-    #    def params_without_pic_field(options)
-    #      options.except(:pic)
-    #    end
+
 
   end
 end
