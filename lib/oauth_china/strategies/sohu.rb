@@ -2,7 +2,6 @@ module OauthChina
   class Sohu < OauthChina::OAuth
 
     def initialize(*args)
-      #fuck sohu...!!
       #搜狐微博的OAUTH 只支持将OAuth的认证参数放在HTTP的头部中。而且不可以带realm参数
       self.consumer_options = {
         :site               => 'http://api.t.sohu.com',
@@ -31,9 +30,9 @@ module OauthChina
       self.post("http://api.t.sohu.com/statuses/update.json", options)
     end
 
-    #TODO
     def upload_image(content, image_path, options = {})
-      add_status(content, options)
+      options = options.merge!(:status => content, :pic => File.open(image_path, "rb")).to_options
+      upload("http://api.t.sohu.com/statuses/upload.json", options)
     end
     
   end

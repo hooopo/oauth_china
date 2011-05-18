@@ -1,12 +1,17 @@
 require 'rubygems'
 require 'oauth'
-require File.expand_path(File.join(File.dirname(__FILE__), "oauth_china/multipart")) 
+require 'mime/types'
+require 'net/http'
+require 'cgi'
+
+require File.expand_path(File.join(File.dirname(__FILE__), "oauth_china/multipart"))
+require File.expand_path(File.join(File.dirname(__FILE__), "oauth_china/upload"))
 
 module OauthChina
 
   class OAuth
 
-    include Multipart
+    include Upload
 
     CONFIG = {}
 
