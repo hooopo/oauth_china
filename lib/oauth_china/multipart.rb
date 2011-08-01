@@ -53,7 +53,7 @@ module OauthChina
             fp.push(Param.new(k,v))
           end
         }
-        body = fp.collect {|p| "--" + BOUNDARY + "\r\n" + p.to_multipart }.join("") + "--" + BOUNDARY + "--rn"
+        body = fp.collect {|p| "--" + BOUNDARY + "\r\n" + p.to_multipart }.join("") + "--" + BOUNDARY + "--\r\n"
         return body, ContentType
       end
 
