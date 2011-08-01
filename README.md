@@ -1,6 +1,10 @@
 #简介
 
-    OAuth gem for rails，支持豆瓣，新浪微薄，腾讯微博，搜狐微博，网易微博。
+    通过OAuth方式同步用户消息到微博平台（支持豆瓣，新浪微薄，腾讯微博，搜狐微博，网易微博）
+    和omini-auth的区别：omini-auth是专门提供oauth授权和获取用户信息的gem(比如用新浪微博帐号登陆这种需求)
+    oauth_china是一个方便的同步信息到其他微博平台的gem（用来做做followco5.com或http://fanfou.com/settings/sync这样需求）
+    
+    
 
 #安装
 
