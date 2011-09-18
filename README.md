@@ -104,3 +104,12 @@
     腾讯微博API文档：http://open.t.qq.com/resource.php?i=1,1
     新浪微博API文档：http://open.t.sina.com.cn/wiki/index.php/API%E6%96%87%E6%A1%A3
     豆瓣微博API文档：http://www.douban.com/service/apidoc/reference/
+#License
+  This program is free softwareyou can redistribute it and /or modify
+  it under the terms of the GNU General Public License as published by 
+  the Free Software Foundataioneither version 2 of the License,or (at 
+  your option) any later version.
+
+  You should have read the GNU General Public License before start "RTFSC".
+
+  If not,see <http://www.gnu.org/licenses/>
