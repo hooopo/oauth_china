@@ -29,7 +29,7 @@ config/oauth/sohu.yml
 config/oauth/netease.yml
 ``````
 
-** 配置文件格式：
+*  配置文件格式：
         
 ``````yaml
 development:
@@ -86,7 +86,7 @@ end
 
 *  注意
 
-       系统时间要正确设置。否则会出现timstamps refused错误
+系统时间要正确设置。否则会出现timstamps refused错误
 
 #API文档
 
