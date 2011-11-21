@@ -15,93 +15,73 @@ gem install oauth_china
 * 在Gemfile里添加:
 
 ``````
-    gem 'oauth'
-    gem 'oauth_china'
+gem 'oauth'
+gem 'oauth_china'
 ``````
 
 *  添加配置文件
 
 ``````
-        配置文件路径：
-        config/oauth/douban.yml
-        config/oauth/sina.yml
-        config/oauth/qq.yml
-        config/oauth/sohu.yml
-        config/oauth/netease.yml
+config/oauth/douban.yml
+config/oauth/sina.yml
+config/oauth/qq.yml
+config/oauth/sohu.yml
+config/oauth/netease.yml
 ``````
 
-        配置文件格式：
+** 配置文件格式：
         
-``````
-        development:
-          key:    "you api key"
-          secret: "your secret"
-          url:    "http://yoursite.com"
-          callback: "http://localhost:3000/your_callback_url"
-        production:
-          key:    "you api key"
-          secret: "your secret"
-          url:    "http://yoursite.com"
-          callback: "http://localhost:3000/your_callback_url"
+``````yaml
+development:
+      key:    "you api key"
+      secret: "your secret"
+      url:    "http://yoursite.com"
+      callback: "http://localhost:3000/your_callback_url"
+production:
+      key:    "you api key"
+      secret: "your secret"
+      url:    "http://yoursite.com"
+      callback: "http://localhost:3000/your_callback_url"
 ``````
 
 *  演示
 
-``````
-            #config/oauth/sina.yml
-            development:
-                  key:    "you api key"
-                  secret: "your secret"
-                  url:    "http://yoursite.com"
-                  callback: "http://localhost:3000/syncs/sina/callback"
-                production:
-                  key:    "you api key"
-                  secret: "your secret"
-                  url:    "http://yoursite.com"
-                  callback: "http://localhost:3000/syncs/sina/callback"
+``````ruby
+# encoding: UTF-8
+class SyncsController < ApplicationController
 
+  before_filter :login_required
 
-            #config/routes.rb
-            match "syncs/:type/new" => "syncs#new", :as => :sync_new
-            match "syncs/:type/callback" => "syncs#callback", :as => :sync_callback
+  def new
+    client = OauthChina::Sina.new
+    authorize_url = client.authorize_url
+    Rails.cache.write(build_oauth_token_key(client.name, client.oauth_token), client.dump)
+    redirect_to authorize_url
+  end
 
-            #app/controllers/syncs_controller.rb
-            # encoding: UTF-8
-            class SyncsController < ApplicationController
+  def callback
+    client = OauthChina::Sina.load(Rails.cache.read(build_oauth_token_key(params[:type], params[:oauth_token])))
+    client.authorize(:oauth_verifier => params[:oauth_verifier])
 
-              before_filter :login_required
+    results = client.dump
 
-              def new
-                client = OauthChina::Sina.new
-                authorize_url = client.authorize_url
-                Rails.cache.write(build_oauth_token_key(client.name, client.oauth_token), client.dump)
-                redirect_to authorize_url
-              end
+    if results[:access_token] && results[:access_token_secret]
+      #在这里把access token and access token secret存到db
+      #下次使用的时候:
+      #client = OauthChina::Sina.load(:access_token => "xx", :access_token_secret => "xxx")
+      #client.add_status("同步到新浪微薄..")
+      flash[:notice] = "授权成功！"
+    else
+      flash[:notice] = "授权失败!"
+    end
+    redirect_to account_syncs_path
+  end
 
-              def callback
-                client = OauthChina::Sina.load(Rails.cache.read(build_oauth_token_key(params[:type], params[:oauth_token])))
-                client.authorize(:oauth_verifier => params[:oauth_verifier])
-
-                results = client.dump
-
-                if results[:access_token] && results[:access_token_secret]
-                  #在这里把access token and access token secret存到db
-                  #下次使用的时候:
-                  #client = OauthChina::Sina.load(:access_token => "xx", :access_token_secret => "xxx")
-                  #client.add_status("同步到新浪微薄..")
-                  flash[:notice] = "授权成功！"
-                else
-                  flash[:notice] = "授权失败!"
-                end
-                redirect_to account_syncs_path
-              end
-
-              private
-              def build_oauth_token_key(name, oauth_token)
-                [name, oauth_token].join("_")
-              end
-
-            end
+  private
+  def build_oauth_token_key(name, oauth_token)
+    [name, oauth_token].join("_")
+  end
+end
 ``````
 
 *  注意
@@ -110,9 +90,10 @@ gem install oauth_china
 
 #API文档
 
-    腾讯微博API文档：http://open.t.qq.com/resource.php?i=1,1
-    新浪微博API文档：http://open.t.sina.com.cn/wiki/index.php/API%E6%96%87%E6%A1%A3
-    豆瓣微博API文档：http://www.douban.com/service/apidoc/reference/
+* 腾讯微博API文档：http://open.t.qq.com/resource.php?i=1,1
+* 新浪微博API文档：http://open.t.sina.com.cn/wiki/index.php/API%E6%96%87%E6%A1%A3
+* 豆瓣微博API文档：http://www.douban.com/service/apidoc/reference/
+
 #License
   This program is free softwareyou can redistribute it and /or modify
   it under the terms of the GNU General Public License as published by 
