@@ -1,32 +1,38 @@
 #简介
 
-    通过OAuth方式同步用户消息到微博平台（支持豆瓣，新浪微薄，腾讯微博，搜狐微博，网易微博）
-    和omini-auth的区别：omini-auth是专门提供oauth授权和获取用户信息的gem(比如用新浪微博帐号登陆这种需求)
-    oauth_china是一个方便的同步信息到其他微博平台的gem（用来做像follow5.com或http://fanfou.com/settings/sync这样需求）
+* 通过OAuth方式同步用户消息到微博平台（支持豆瓣，新浪微薄，腾讯微博，搜狐微博，网易微博）
+* 和omini-auth的区别：omini-auth是专门提供oauth授权和获取用户信息的gem(比如用新浪微博帐号登陆这种需求)
+* oauth_china是一个方便的同步信息到其他微博平台的gem（用来做像follow5.com或http://fanfou.com/settings/sync这样需求）
     
-    
-
 #安装
 
-    gem install oauth_china
+``````
+gem install oauth_china
+``````
 
 #使用
 
 * 在Gemfile里添加:
 
+``````
     gem 'oauth'
     gem 'oauth_china'
+``````
 
 *  添加配置文件
 
+``````
         配置文件路径：
         config/oauth/douban.yml
         config/oauth/sina.yml
         config/oauth/qq.yml
         config/oauth/sohu.yml
         config/oauth/netease.yml
+``````
 
         配置文件格式：
+        
+``````
         development:
           key:    "you api key"
           secret: "your secret"
@@ -37,9 +43,11 @@
           secret: "your secret"
           url:    "http://yoursite.com"
           callback: "http://localhost:3000/your_callback_url"
+``````
 
 *  演示
 
+``````
             #config/oauth/sina.yml
             development:
                   key:    "you api key"
@@ -94,6 +102,7 @@
               end
 
             end
+``````
 
 *  注意
 
