@@ -47,10 +47,12 @@ production:
 *  演示
 
 ``````ruby
+#config/routes.rb
+match "syncs/:type/new" => "syncs#new", :as => :sync_new
+match "syncs/:type/callback" => "syncs#callback", :as => :sync_callback
+
 # encoding: UTF-8
 class SyncsController < ApplicationController
-
-  before_filter :login_required
 
   def new
     client = OauthChina::Sina.new
@@ -74,7 +76,7 @@ class SyncsController < ApplicationController
     else
       flash[:notice] = "授权失败!"
     end
-    redirect_to account_syncs_path
+    redirect_to root_path
   end
 
   private
