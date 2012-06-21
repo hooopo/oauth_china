@@ -12,7 +12,11 @@ module OauthChina
       def to_multipart
         #return "Content-Disposition: form-data; name=\"#{CGI::escape(k)}\"\r\n\r\n#{v}\r\n"
         # Don't escape mine...
-        return "Content-Disposition: form-data; name=\"#{k}\"\r\n\r\n#{v}\r\n".force_encoding("ASCII-8BIT")
+        if "".respond_to?(:force_encoding)
+          return "Content-Disposition: form-data; name=\"#{k}\"\r\n\r\n#{v}\r\n".force_encoding("ASCII-8BIT")
+        else
+          return "Content-Disposition: form-data; name=\"#{k}\"\r\n\r\n#{v}\r\n"
+        end
       end
     end
 
