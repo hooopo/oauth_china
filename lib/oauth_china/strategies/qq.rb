@@ -37,16 +37,13 @@ module OauthChina
       self.post("http://open.t.qq.com/api/t/add", options)
     end
 
-    #TODO
+    
     def upload_image(content, image_path, options = {})
-      add_status(content, options)
+      options = options.merge!(:content => content, :pic => File.open(image_path, "rb")).to_options
+      self.consumer.options[:site] = "http://open.t.qq.com/api/t/add_pic"
+      self.consumer.uri("http://open.t.qq.com/api/t/add_pic")
+      upload("http://open.t.qq.com/api/t/add_pic", options)
     end
-
-    #    def upload_image(content, image_path, options = {})
-    #      options = options.merge!(:content => content, :pic => File.open(image_path, "rb")).to_options
-    #
-    #      upload("http://open.t.qq.com/api/t/add_pic", options)
-    #    end
 
 
   end
