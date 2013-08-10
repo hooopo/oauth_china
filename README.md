@@ -97,11 +97,11 @@ end
 * 豆瓣微博API文档：http://www.douban.com/service/apidoc/reference/
 
 #License
-  This program is free softwareyou can redistribute it and /or modify
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundataioneither version 2 of the License,or (at 
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or (at
   your option) any later version.
 
   You should have read the GNU General Public License before start "RTFSC".
 
-  If not,see <http://www.gnu.org/licenses/>
+  If not, see <http://www.gnu.org/licenses/>
