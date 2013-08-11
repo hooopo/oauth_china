@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Hooopo"]
   s.email       = ["hoooopo@gmail.com"]
   s.homepage    = ""
-  s.summary     = %q{新浪，豆瓣，腾讯等国内微薄OAuth认证}
-  s.description = %q{新浪，豆瓣，腾讯等国内微薄OAuth认证}
+  s.summary     = %q{新浪，豆瓣，腾讯等国内微博OAuth认证}
+  s.description = %q{新浪，豆瓣，腾讯等国内微博OAuth认证}
 
   s.rubyforge_project = "oauth_china"
 
