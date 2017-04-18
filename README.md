@@ -1,18 +1,18 @@
 # unmaintained
 
-#简介
+# 简介
 
 * 通过OAuth方式同步用户消息到微博平台（支持豆瓣，新浪微薄，腾讯微博，搜狐微博，网易微博）
 * 和omini-auth的区别：omini-auth是专门提供oauth授权和获取用户信息的gem(比如用新浪微博帐号登陆这种需求)
 * oauth_china是一个方便的同步信息到其他微博平台的gem（用来做像follow5.com或http://fanfou.com/settings/sync这样需求）
     
-#安装
+# 安装
 
 ``````
 gem install oauth_china
 ``````
 
-#使用
+# 使用
 
 * 在Gemfile里添加:
 
@@ -92,13 +92,13 @@ end
 
 系统时间要正确设置。否则会出现timstamps refused错误
 
-#API文档
+# API文档
 
 * 腾讯微博API文档：http://open.t.qq.com/resource.php?i=1,1
 * 新浪微博API文档：http://open.t.sina.com.cn/wiki/index.php/API%E6%96%87%E6%A1%A3
 * 豆瓣微博API文档：http://www.douban.com/service/apidoc/reference/
 
-#License
+# License
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 2 of the License, or (at
